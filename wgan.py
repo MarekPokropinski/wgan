@@ -1,4 +1,3 @@
-from models import MnistGenerator, MnistDiscriminator
 import tensorflow as tf
 
 
@@ -65,18 +64,3 @@ class WGAN:
         slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), axis=1))
         gradient_penalty = tf.reduce_mean(tf.square(slopes-1.))
         return gradient_penalty
-
-
-# generator = MnistGenerator()
-# discriminator = MnistDiscriminator()
-# gan = WGAN(generator, discriminator)
-# gan.get_losses(tf.random.normal([1, 28, 28, 1]))
-
-
-# def func(x):
-#     return gan.get_losses(x)
-
-# tf_func = tf.function(func)
-
-# print(tf_func.get_concrete_function(tf.random.normal([1, 28, 28, 1])).graph)
-# print(tf.autograph.to_code(func, recursive=False))
